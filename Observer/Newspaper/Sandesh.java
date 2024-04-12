@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Sandesh implements NewsComapny{
+	String msg="";
+	public List<Observer> observers = new ArrayList<>();
+	
+	public void register(Observer observer){
+		observers.add(observer);
+	}
+	public void deRegister(Observer observer){
+		observers.remove(observer);
+	}
+	public void notifyOb(){
+		for(Observer observer:observers){
+			observer.update(msg);
+		}
+	}
+	public void newNews(String msg){
+		this.msg = msg;
+		notifyOb();
+	}
+}
